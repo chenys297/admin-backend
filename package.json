@@ -1,0 +1,27 @@
+{
+  "name": "admin-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koa"
+  ],
+  "author": "chenys",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/router": "^9.4.0",
+    "koa": "^2.13.0",
+    "koa-combine-routers": "^4.0.2",
+    "koa2-cors": "^2.0.6",
+    "mime": "^2.4.6",
+    "moment": "^2.27.0",
+    "mongoose": "^5.10.2",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
