@@ -3,6 +3,12 @@ const conn = require("../db/mongo");
 
 const MenuSchema = mongoose.Schema({
   // 菜单编号
+  id: {
+    type: Number,
+    unique: true,
+    requires: true,
+  },
+  // 菜单编号
   code: {
     type: Number,
     required: true,
@@ -10,7 +16,8 @@ const MenuSchema = mongoose.Schema({
   },
   pId: {
     ref: "Menu",
-    type: mongoose.Schema.Types.ObjectId,
+    // type: mongoose.Schema.Types.ObjectId,
+    type: Number,
     default: 0,
   },
   name: {
@@ -28,6 +35,10 @@ const MenuSchema = mongoose.Schema({
     type: String,
   },
   component: {
+    type: String,
+  },
+  // 路由重定向
+  redirect: {
     type: String,
   },
   // 如果是显示的菜单，可通过这个设置菜单前的icon
