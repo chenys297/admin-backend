@@ -1,20 +1,21 @@
 const mongoose = require("mongoose");
 const conn = require("../db/mongo");
 
-const RoleSchema = mongoose.Schema({
-  name: {
+const DictDetailSchema = mongoose.Schema({
+  dictCode: {
+    type: Number,
+    required: true,
+  },
+  value: {
+    type: Number,
+    required: true,
+  },
+  label: {
     type: String,
     required: true,
-    maxLength: 16,
-    minLength: 4,
-    trim: true,
   },
-  status: {
-    type: Number,
-    default: 1,
-    validate(val) {
-      return [0, 1].includes(val);
-    },
+  remark: {
+    type: String,
   },
   createTime: {
     type: Date,
@@ -30,4 +31,4 @@ const RoleSchema = mongoose.Schema({
   },
 });
 
-module.exports = conn.model("Role", RoleSchema, "role");
+module.exports = conn.model("DictDetail", DictDetailSchema, "dict_detail");
