@@ -1,4 +1,12 @@
 class UserController {
+  async login(ctx, next) {
+    ctx.body = "UserController login";
+  }
+
+  async logout(ctx, next) {
+    ctx.body = "UserController logout";
+  }
+
   async getUsers(ctx, next) {
     ctx.body = "UserController getUsers";
   }

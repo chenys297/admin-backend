@@ -1,4 +1,12 @@
 class UserService {
+  login({ username, password, captch }) {
+    ctx.body = "UserService login";
+  }
+
+  logout({ token }) {
+    ctx.body = "UserService logout";
+  }
+
   getUserList({ currentPage = 1, pageSize = 10, ...params }) {
     ctx.body = "UserService getUserList";
   }
