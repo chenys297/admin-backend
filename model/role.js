@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const conn = require("../db/mongo");
 
 const RoleSchema = mongoose.Schema({
+  code: {
+    type: Number,
+    required: true,
+    unique: true,
+  },
   name: {
     type: String,
     required: true,
@@ -12,10 +17,13 @@ const RoleSchema = mongoose.Schema({
   status: {
     type: Number,
     default: 1,
-    validate(val) {
-      return [0, 1].includes(val);
-    },
+    enum: [0, 1],
+    // validate(val) {
+    //   return [0, 1].includes(val);
+    // },
   },
+  description: String,
+  reamrk: String,
   createTime: {
     type: Date,
     default: Date.now,
@@ -23,10 +31,6 @@ const RoleSchema = mongoose.Schema({
   updateTime: {
     type: Date,
     default: Date.now,
-  },
-  operator: {
-    ref: "User",
-    type: mongoose.Schema.Types.ObjectId,
   },
 });
 

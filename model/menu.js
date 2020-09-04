@@ -15,8 +15,6 @@ const MenuSchema = mongoose.Schema({
     unique: true,
   },
   pId: {
-    ref: "Menu",
-    // type: mongoose.Schema.Types.ObjectId,
     type: Number,
     default: 0,
   },
@@ -28,6 +26,7 @@ const MenuSchema = mongoose.Schema({
   show: {
     type: Number,
     required: true,
+    enum: [0, 1],
     default: 0,
   },
   // 如果是菜单的话 => 菜单对应的路由 如果是按钮的话 => 不用填
@@ -72,10 +71,6 @@ const MenuSchema = mongoose.Schema({
   updateTime: {
     type: Date,
     default: Date.now,
-  },
-  operator: {
-    ref: "User",
-    type: mongoose.Schema.Types.ObjectId,
   },
 });
 

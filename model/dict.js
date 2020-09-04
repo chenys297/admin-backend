@@ -7,12 +7,23 @@ const DictSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
+  // 字典类型 1:系统字典 2:业务字典
+  type: {
+    type: Number,
+    required: true
+  },
   name: {
     type: String,
     required: true,
   },
   description: {
     type: String,
+  },
+  // 是都可以更改 0: 否 1:是
+  editable: {
+    type: Number,
+    enum: [0, 1],
+    default: 0
   },
   remark: {
     type: String,
@@ -24,10 +35,6 @@ const DictSchema = mongoose.Schema({
   updateTime: {
     type: Date,
     default: Date.now,
-  },
-  operator: {
-    ref: "User",
-    type: mongoose.Schema.Types.ObjectId,
   },
 });
 

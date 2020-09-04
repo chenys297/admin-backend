@@ -7,9 +7,8 @@ const PermSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  roleId: {
-    ref: "Role",
-    type: mongoose.Schema.Types.ObjectId,
+  roleCode: {
+    type: Number,
     required: true,
   },
   createTime: {
@@ -19,10 +18,6 @@ const PermSchema = mongoose.Schema({
   updateTime: {
     type: Date,
     default: Date.now,
-  },
-  operator: {
-    ref: "User",
-    type: mongoose.Schema.Types.ObjectId,
   },
 });
 

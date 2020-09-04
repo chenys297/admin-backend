@@ -12,9 +12,10 @@ const UserSchema = mongoose.Schema({
   },
   gender: {
     type: Number,
-    validate(val) {
-      return [0, 1].includes(val);
-    },
+    enum: [0, 1],
+    // validate(val) {
+    //   return [0, 1].includes(val);
+    // },
   },
   email: {
     type: String,
@@ -35,9 +36,10 @@ const UserSchema = mongoose.Schema({
   status: {
     type: Number,
     default: 1,
-    validate(val) {
-      return [0, 1].includes(val);
-    },
+    enum: [0, 1],
+    // validate(val) {
+    //   return [0, 1].includes(val);
+    // },
   },
   createTime: {
     type: Date,
@@ -46,10 +48,6 @@ const UserSchema = mongoose.Schema({
   updateTime: {
     type: Date,
     default: Date.now,
-  },
-  operator: {
-    ref: "User",
-    type: mongoose.Schema.Types.ObjectId,
   },
 });
 

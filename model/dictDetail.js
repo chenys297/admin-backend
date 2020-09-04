@@ -25,10 +25,6 @@ const DictDetailSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  operator: {
-    ref: "User",
-    type: mongoose.Schema.Types.ObjectId,
-  },
 });
 
 module.exports = conn.model("DictDetail", DictDetailSchema, "dict_detail");
