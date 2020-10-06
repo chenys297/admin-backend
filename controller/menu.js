@@ -1,6 +1,14 @@
+const { response_200 } = require("../utils/index");
+const MenuService = require("../service/menu");
+
 class MenuController {
   async getMenus(ctx, next) {
-    ctx.body = "MenuController getMenus";
+    try {
+      const menus = await MenuService.getMenus(ctx.query);
+      ctx.body = response_200(menus);
+    } catch (error) {
+      throw new Error("[MenuController.getMenus] error：" + error);
+    }
   }
   async getMenu(ctx, next) {
     ctx.body = "MenuController getMenu";

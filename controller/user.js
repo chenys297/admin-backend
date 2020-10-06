@@ -1,3 +1,6 @@
+const { response_200 } = require("../utils/index");
+const UserService = require("../service/user");
+
 class UserController {
   async login(ctx, next) {
     ctx.body = "UserController login";
@@ -8,7 +11,12 @@ class UserController {
   }
 
   async getUsers(ctx, next) {
-    ctx.body = "UserController getUsers";
+    try {
+      const userListObj = await UserService.getUserList(ctx.query);
+      ctx.body = response_200(userListObj);
+    } catch (error) {
+      throw new Error("[UserController.getUsers] error：" + error);
+    }
   }
   async getUser(ctx, next) {
     ctx.body = "UserController getUser";

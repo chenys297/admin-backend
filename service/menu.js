@@ -1,6 +1,26 @@
+const MenuModel = require("../model/menu");
+
 class MenuService {
-  getMenus({ currentPage = 1, pageSize = 10, ...params }) {
-    ctx.body = "MenuService getMenus";
+  async getMenus(params) {
+    try {
+      let menus = [];
+      if (params.currentPage && params.pageSize) {
+        menus = await MenuModel.find({})
+          .skip((currentPage - 1) * pageSize)
+          .limit(pageSize)
+          .sort({ id: -1 })
+          .exec();
+      } else {
+        menus = await MenuModel.find({}).sort({ id: -1 }).exec();
+      }
+      const total = await MenuModel.countDocuments({});
+      return {
+        list: menus,
+        total,
+      };
+    } catch (error) {
+      throw new Error("[MenuService.getMenus] error: " + error);
+    }
   }
   getMenu(menuId) {
     ctx.body = "MenuService getMenu";
